@@ -1,6 +1,10 @@
 package com.stress.stressMonks;
 
 import omniapi.OmniScript;
+import org.osbot.rs07.api.ui.Skill;
+import org.osbot.rs07.api.util.ExperienceTracker;
+
+import java.awt.*;
 
 /**
  * Copyright (c) 2015  Stress
@@ -26,13 +30,22 @@ import omniapi.OmniScript;
  */
 public class StressMonks extends OmniScript {
 
+    ExperienceTracker xpTracc;
+
     @Override
     public void onStart() {
+      xpTracc.startAll();
 
     }
 
     @Override
     public int onLoop() throws InterruptedException {
         return 0;
+    }
+
+    @Override
+    public void onPaint(Graphics2D g) {
+        g.drawString("atk xp: " + getExperienceTracker().getGainedXP(Skill.STRENGTH), 140, 250);
+
     }
 }
