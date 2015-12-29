@@ -97,7 +97,7 @@ public class Web { // TODO: extend OmniScriptEmulator<OmniScript>
 			if (node.hasAction("Open", "Close", "Use", "Enter", "Climb", "Climb-up", "Climb-down", "Climb-into",
 					"Cross", "Jump-over", "Slash", "Pass-through"))
 				targetSet = obstacles;
-			if (node.hasAction("Talk-to", "Attack"))
+			if (node.hasAction("Talk-to", "AttackMonk"))
 				targetSet = npcs;
 		}
 		node = addNode(node);

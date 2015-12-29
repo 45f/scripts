@@ -142,7 +142,7 @@ public class NPC extends OmniScriptEmulator<OmniScript> implements PhysicalBase 
 	public boolean attack() throws InterruptedException {
 		if (!isAttackable() || isUnderAttack() || myPlayer().isUnderAttack())
 			return false;
-		return interact("Attack");
+		return interact("AttackMonk");
 	}
 
 	public boolean pickpocket() throws InterruptedException {
@@ -224,7 +224,7 @@ public class NPC extends OmniScriptEmulator<OmniScript> implements PhysicalBase 
 	public boolean isAttackable() {
 		if (!exists())
 			return false;
-		return hasAction("Attack") && (getHealth() > 0);
+		return hasAction("AttackMonk") && (getHealth() > 0);
 	}
 
 	public boolean isAnimating() {
