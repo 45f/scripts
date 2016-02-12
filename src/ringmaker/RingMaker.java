@@ -115,8 +115,7 @@ public class RingMaker extends OmniScript {
         gg.drawString("Gained craft levels: " + getExperienceTracker().getGainedLevels(Skill.CRAFTING), 20, 280);
         gg.drawString("Rings Made: " + getRingsMade(startXP, getSkills().getExperience(Skill.CRAFTING)), 20, 300);
         gg.drawString("Profit Made: " + ringProfit + " (" + (ringProfit / hours) + ")", 20, 320);
-        //gg.drawString("Profit/h: " + (ringProfit / hours), 20, 340);
-        //drawProfitH(gg, profit, hours);
+
     }
 
     public static int getRingsMade(final int startXP, final int currentXP) {
