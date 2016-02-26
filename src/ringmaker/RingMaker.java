@@ -44,11 +44,8 @@ public class RingMaker extends OmniScript {
     private long startTime;
 
     private int startXP;
-    private double profit;
-    private int startCraftXP;
-    public static int buttDick; // Ring ID for loot
+    public static int ringID; // Ring ID for loot
     public static boolean started = false;
-    public static String dickButt; // Ring name
 
     private Loot RING;
 
@@ -71,7 +68,7 @@ public class RingMaker extends OmniScript {
         startXP = getSkills().getExperience(Skill.CRAFTING);
         getExperienceTracker().start(Skill.CRAFTING);
         getExperienceTracker().start(Skill.MAGIC);
-        RING = new Loot(buttDick);
+        RING = new Loot(ringID);
     }
 
     @Override
@@ -81,7 +78,7 @@ public class RingMaker extends OmniScript {
 
     @Override
     public int onLoop() throws InterruptedException {
-        long ringCount = getInventory().getAmount(buttDick);
+        long ringCount = getInventory().getAmount(ringID);
         if (ringCount > RING.prevInvCount) {
             RING.count += ringCount - RING.prevInvCount;
             RING.prevInvCount = ringCount;
@@ -103,8 +100,8 @@ public class RingMaker extends OmniScript {
         Point mP = getMouse().getPosition();
 
         /* X cursor for mouse pos */
-        gg.drawLine(mP.x - 5, mP.y + 5, mP.x + 5, mP.y - 5);
-        gg.drawLine(mP.x + 5, mP.y + 5, mP.x - 5, mP.y - 5);
+        gg.drawLine(mP.x - 10, mP.y + 10, mP.x + 10, mP.y - 10);
+        gg.drawLine(mP.x + 10, mP.y + 10, mP.x - 10, mP.y - 10);
 
         gg.setColor(Color.white);
         gg.drawString("Ring Maker", 20, 180);
@@ -130,11 +127,6 @@ public class RingMaker extends OmniScript {
         return String.format("%02d:%02d:%02d", h, m, s);
     }
 
-    private void drawProfitH(Graphics2D gg, double profit, float hours) {
-        gg.setColor(Color.PINK);
-        gg.drawString("Profit/h: " + (profit / hours), 20, 360);
-    }
-
     private class Loot {
 
         int id; // Id used for getting the price of the item
@@ -148,10 +140,7 @@ public class RingMaker extends OmniScript {
             log(price = getPrice(id));
         }
 
-        public long getProfit() {
-
-            return count * price; // Profit = quantity * price
-        }
+        public long getProfit() { return count * price; }
 
         private int getPrice(int id) {
 

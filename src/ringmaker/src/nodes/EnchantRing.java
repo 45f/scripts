@@ -57,7 +57,6 @@ public class EnchantRing extends AbstractNode {
                 final long ringAmnt = script.getInventory().getAmount("Ring of dueling");
                 script.getMagic().castSpell(Spells.NormalSpells.LVL_2_ENCHANT);
                 script.getInventory().getItem("Emerald ring").interact();
-                //log("enchanting rings to dueling rings");
                 new ConditionalSleep(1000) {
                     public boolean condition() throws InterruptedException {
                         return EnchantRing.this.script.getInventory().getAmount("Ring of dueling") > ringAmnt;
@@ -67,7 +66,6 @@ public class EnchantRing extends AbstractNode {
                 final long ringAmnt = script.getInventory().getAmount("Ring of recoil");
                 script.getMagic().castSpell(Spells.NormalSpells.LVL_1_ENCHANT);
                 script.getInventory().getItem("Sapphire ring").interact();
-                //log("enchanting rings to recoil rings");
                 new ConditionalSleep(1000) {
                     public boolean condition() throws InterruptedException {
                         return EnchantRing.this.script.getInventory().getAmount("Ring of recoil") > ringAmnt;

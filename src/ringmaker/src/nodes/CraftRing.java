@@ -56,11 +56,11 @@ public class CraftRing extends AbstractNode {
         Position spot = new Position(3109, 3499, 0);
         script.getWalking().walk(spot);
         craft();
-        return 2500;
+        getMouse().moveRandomly();
+        return 3000;
     }
 
     private void craft() throws InterruptedException {
-        script.getCamera().movePitch(67);
         final RS2Widget amountWidget = getEnterAmountWidget();
         if (craftRecoils) {
             smeltSelectWidget = getSapphireWidget();
@@ -69,7 +69,7 @@ public class CraftRing extends AbstractNode {
         if (amountWidget != null && amountWidget.isVisible()) {
             enterRingAmount();
         } else if (smeltSelectWidget != null && smeltSelectWidget.isVisible()) {
-            selectMakeX();
+            selectMakeXOption();
         } else if (this.isGoldBarSelected()) {
             useFurnace();
         } else {
@@ -93,7 +93,6 @@ public class CraftRing extends AbstractNode {
         return smeltSelectWidget;
     }
 
-    /* Enters  13 */
     private void enterRingAmount() {
         if (script.getKeyboard().typeString("13")) {
             new ConditionalSleep(2000) {
@@ -104,8 +103,7 @@ public class CraftRing extends AbstractNode {
         }
     }
 
-    /* Select "Make-X" widget */
-    private void selectMakeX() {
+    private void selectMakeXOption() {
         if (getSmeltSelectWidget().interact("Make-X")) {
             new ConditionalSleep(2000) {
                 public boolean condition() throws InterruptedException {
@@ -115,13 +113,13 @@ public class CraftRing extends AbstractNode {
         }
     }
 
-    /* Method to insure the gold bar is selected */
+
     private boolean isGoldBarSelected() {
         final String selectedItemName = getInventory().getSelectedItemName();
         return selectedItemName != null && selectedItemName.equals("Gold bar");
     }
 
-    /* Method for interacting with the furnace */
+
     private void useFurnace() {
         RS2Object FURNACE = getObjects().closest("Furnace");
         if (FURNACE != null && FURNACE.interact("Use")) {
@@ -133,7 +131,7 @@ public class CraftRing extends AbstractNode {
         }
     }
 
-    /* Method for selecting a gold bar */
+
     private void useGoldBar() {
         if (script.getInventory().interact("Use", "Gold bar")) {
             new ConditionalSleep(2500) {
