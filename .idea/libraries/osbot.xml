@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="osbot">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/osbot 2.4.39.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
