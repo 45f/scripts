@@ -12,13 +12,14 @@ import java.util.ArrayList;
  * Created by mvpni on 3/3/2017.
  */
 @ScriptManifest(logo = "", name = "Mess Hall", info = "Does the Mess hall minigame.",
-        author = "Raijin", version = 0.1)
+        author = "Raijin", version = 0.0)
 public class MessHall extends Script {
 
     ArrayList<AbstractTask> tasks = new ArrayList<AbstractTask>();
 
     @Override
     public void onStart() {
+        log("version: " + getVersion());
 
     }
 
@@ -32,7 +33,7 @@ public class MessHall extends Script {
                 e.printStackTrace();
             }
         });
-        return 2500;
+        return 250;
     }
 
     @Override
