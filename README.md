@@ -1,2 +1,2 @@
-# scripts
-Hi lads, welcome to my GitHub page for my OSBot scripts.
+# OSBot Scripts
+This is my small and old collection of scripts for OSBot.
